@@ -5,7 +5,7 @@ import re
 from matplotlib import pyplot as plt
 from datetime import datetime
 
-time = '2019-04'
+time = '2019-07'
 filename = 'Soil_vwc.DAT'
 new_filename = 'Soil_vwc_' + time +'.DAT'
 
@@ -59,9 +59,13 @@ def Split():
 		
 		# ~ plt.show()
 		
-
-file_path = os.getcwd()
-for filename1 in os.listdir(file_path):
-	print(filename1)
-
-Split()
+if __name__ == "__main__":
+	os.chdir(r'ygs')
+	current_path = os.getcwd()
+	file_paths = os.listdir()
+	for file_path in file_paths:
+		os.chdir(file_path)
+		print("进入 " + file_path)
+		Split()
+		os.chdir(current_path)
+	
