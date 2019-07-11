@@ -60,12 +60,16 @@ def Split():
 		# ~ plt.show()
 		
 if __name__ == "__main__":
-	os.chdir(r'ygs')
-	current_path = os.getcwd()
-	file_paths = os.listdir()
-	for file_path in file_paths:
-		os.chdir(file_path)
-		print("进入 " + file_path)
-		Split()
-		os.chdir(current_path)
-	
+	try:
+		os.chdir(r'ygs')
+	except FileNotFoundError:
+		msg = "未发现ygs文件夹，请在本程序根目录下创建ygs文件夹，并将遥感所所有的站点数据文件夹拷贝到该目录下."
+		print(msg)
+	else:	
+		current_path = os.getcwd()
+		file_paths = os.listdir()
+		for file_path in file_paths:
+			os.chdir(file_path)
+			print("进入 " + file_path)
+			Split()
+			os.chdir(current_path)
