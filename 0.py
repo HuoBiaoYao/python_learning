@@ -5,7 +5,7 @@ import re
 from matplotlib import pyplot as plt
 from datetime import datetime
 
-time = '2019-07'
+time = '2019-08'
 filename = 'Soil_vwc.DAT'
 new_filename = 'Soil_vwc_' + time +'.DAT'
 
@@ -49,7 +49,6 @@ def Split():
 				current_datetime = datetime.strptime(row[1], "%Y-%m-%d %H:%M:%S")
 				datetimes.append(current_datetime)
 				records.append(row[0])
-		
 		# ~ fig = plt.figure(dpi=128, figsize=(10,6))
 		# ~ plt.plot(records, c='red')
 		# ~ plt.title("test", fontsize=16)
@@ -57,14 +56,13 @@ def Split():
 		# ~ plt.ylabel("number of record", fontsize=16)
 		# ~ plt.tick_params(axis='both', which='major', labelsize=16)
 		
-		# ~ plt.show()
+		# ~ plt.show()			
 		
 if __name__ == "__main__":
 	try:
 		os.chdir(r'ygs')
 	except FileNotFoundError:
-		msg = "未发现ygs文件夹，请在本程序根目录下创建ygs文件夹，并将遥感所所有的站点数据文件夹拷贝到该目录下."
-		print(msg)
+		print("未发现ygs文件夹，请在本程序根目录下创建ygs文件夹，并将遥感所所有的站点数据文件夹拷贝到该目录下.")
 	else:	
 		current_path = os.getcwd()
 		file_paths = os.listdir()
